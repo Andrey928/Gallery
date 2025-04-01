@@ -1,0 +1,64 @@
+﻿<Window x:Class="gallery_mk4.Windows.EditAuthorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Редактирование автора" 
+        Height="350" 
+        Width="400"
+        Background="#F5F5DC"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Имя -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле имени -->
+            <RowDefinition Height="Auto"/>
+            <!-- Год рождения -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле года рождения -->
+            <RowDefinition Height="Auto"/>
+            <!-- Год смерти -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле года смерти -->
+            <RowDefinition Height="*"/>
+            <!-- Пустое пространство -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+        </Grid.RowDefinitions>
+
+        <!-- Имя автора -->
+        <Label Content="Имя автора:" Grid.Row="0"/>
+        <TextBox Text="{Binding CurrentAuthor.Name, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="1" 
+                 Margin="0,0,0,10"/>
+
+        <!-- Год рождения -->
+        <Label Content="Год рождения:" Grid.Row="2"/>
+        <TextBox Text="{Binding CurrentAuthor.BirthYear, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="3" 
+                 Margin="0,0,0,10"/>
+
+        <!-- Год смерти -->
+        <Label Content="Год смерти (необязательно):" Grid.Row="4"/>
+        <TextBox Text="{Binding CurrentAuthor.DeathYear, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="5" 
+                 Margin="0,0,0,20"/>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Отмена" 
+                    Width="100" 
+                    Height="25"
+                    Margin="0,0,10,0"
+                    Click="CancelButton_Click"/>
+            <Button Content="Сохранить" 
+                    Width="100" 
+                    Height="25"
+                    Click="SaveButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,67 @@
+﻿<Window x:Class="gallery_mk4.Windows.EditExhibitionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Редактирование выставки" 
+        Height="400" 
+        Width="600"
+        Background="#F5F5DC"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15,15,15,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Название -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле названия -->
+            <RowDefinition Height="Auto"/>
+            <!-- Дата начала -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле даты начала -->
+            <RowDefinition Height="Auto"/>
+            <!-- Дата окончания -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле даты окончания -->
+            <RowDefinition Height="*"/>
+            <!-- Пустое пространство -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+        </Grid.RowDefinitions>
+
+        <!-- Название выставки -->
+        <Label Content="Название выставки:" Grid.Row="0"/>
+        <TextBox Text="{Binding CurrentExhibition.Title, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="1" 
+                 Margin="0,0,0,10"/>
+
+        <!-- Дата начала -->
+        <Label Content="Дата начала:" Grid.Row="2"/>
+        <DatePicker SelectedDate="{Binding CurrentExhibition.StartDate, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="3"
+                   Margin="0,0,0,10"/>
+
+        <!-- Дата окончания -->
+        <Label Content="Дата окончания:" Grid.Row="4"/>
+        <DatePicker SelectedDate="{Binding CurrentExhibition.EndDate, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="5"
+                   Margin="0,0,0,20"/>
+
+        <!-- Кнопки (без StackPanel) -->
+        <Button Content="Отмена" 
+                Grid.Row="7"
+                Width="100" 
+                Height="30"
+                Margin="0,0,110,0"
+                HorizontalAlignment="Right"
+                Click="CancelButton_Click"/>
+
+        <Button Content="Сохранить" 
+                Grid.Row="7"
+                Width="100" 
+                Height="30"
+                HorizontalAlignment="Right"
+                Click="SaveButton_Click"/>
+    </Grid>
+</Window>

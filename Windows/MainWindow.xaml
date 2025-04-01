@@ -1,0 +1,183 @@
+﻿<Window x:Class="gallery_mk4.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gallery_mk4.Windows"
+        mc:Ignorable="d"
+            Title="Галерея Искусств" Height="700" Width="1100"
+            Background="#F5F5DC">
+
+    <Grid x:Name="MainGrid" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="0" Margin="10">
+            <!-- Вкладка "Произведения" с новыми полями -->
+            <TabItem Header="Произведения">
+                <DataGrid ItemsSource="{Binding Artworks}"
+                      SelectedItem="{Binding SelectedArtwork}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
+                        <DataGridTextColumn Header="Год создания" Binding="{Binding YearCreated}" Width="Auto"/>
+                        <DataGridTextColumn Header="Автор" Binding="{Binding Author.Name}" Width="*"/>
+                        <DataGridTextColumn Header="Выставка" Binding="{Binding Exhibitions.Title}" Width="*"/>
+                        <DataGridTextColumn Header="Жанр" Binding="{Binding Genre.GenreName}" Width="*"/>
+                        <DataGridTextColumn Header="Техника" Binding="{Binding Medium.MediumName}" Width="*"/>
+                        <DataGridTextColumn Header="Место" 
+                                       Binding="{Binding Location.GalleryName}"
+                                       Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!-- Вкладка "Авторы" -->
+            <TabItem Header="Авторы">
+                <DataGrid ItemsSource="{Binding Authors}"
+                      SelectedItem="{Binding SelectedAuthor}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Год рождения" Binding="{Binding BirthYear}" Width="Auto"/>
+                        <DataGridTextColumn Header="Год смерти" Binding="{Binding DeathYear}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!-- Вкладка "Выставки" -->
+            <TabItem Header="Выставки">
+                <DataGrid ItemsSource="{Binding Exhibitions}"
+                      SelectedItem="{Binding SelectedExhibition}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
+                        <DataGridTextColumn Header="Начало" Binding="{Binding StartDate, StringFormat=d}" Width="Auto"/>
+                        <DataGridTextColumn Header="Конец" Binding="{Binding EndDate, StringFormat=d}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!-- Вкладка "Жанры" -->
+            <TabItem Header="Жанры">
+                <DataGrid ItemsSource="{Binding Genres}"
+                      SelectedItem="{Binding SelectedGenre}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название жанра" Binding="{Binding GenreName}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+
+            <TabItem Header="Техника">
+                <DataGrid ItemsSource="{Binding Mediums}"
+                      SelectedItem="{Binding SelectedMedium}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название техники" Binding="{Binding MediumName}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+
+            <TabItem Header="Сотрудники">
+                <DataGrid ItemsSource="{Binding Staff}"
+                      SelectedItem="{Binding SelectedStaff}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" Width="*"/>
+                        <DataGridTextColumn Header="Должность" Binding="{Binding Position}" Width="*"/>
+                        <DataGridTextColumn Header="Дата найма" Binding="{Binding HireDate, StringFormat=d}" Width="Auto"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+
+            <TabItem Header="Локации">
+                <DataGrid ItemsSource="{Binding Locations}"
+                      SelectedItem="{Binding SelectedLocation}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Галерея" Binding="{Binding GalleryName}" Width="*"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Панель управления -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <!-- Кнопка Добавить -->
+            <Button x:Name="AddButton" 
+            Content="Добавить" 
+            Width="120" 
+            Height="50"
+            Margin="10"
+            FontSize="16"
+            Click="Add_Click"
+            Background="#4CAF50" 
+            Foreground="White"
+            BorderBrush="Transparent"
+            Cursor="Hand"
+            ToolTip="Добавить новый элемент">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <!-- Кнопка Удалить -->
+            <Button x:Name="DeleteButton" 
+            Content="Удалить" 
+            Width="120" 
+            Height="50"
+            Margin="10"
+            FontSize="16"
+            Click="Del_Click"
+            Background="#F44336" 
+            Foreground="White"
+            BorderBrush="Transparent"
+            Cursor="Hand"
+            ToolTip="Удалить выбранный элемент">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <!-- Кнопка Редактировать -->
+            <Button x:Name="EditButton" 
+            Content="Редактировать" 
+            Width="120" 
+            Height="50"
+            Margin="10"
+            FontSize="16"
+            Click="Edit_Click"
+            Background="#2196F3" 
+            Foreground="White"
+            BorderBrush="Transparent"
+            Cursor="Hand"
+            ToolTip="Редактировать выбранный элемент">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

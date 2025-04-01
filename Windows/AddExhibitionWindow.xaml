@@ -1,0 +1,55 @@
+﻿<Window x:Class="gallery_mk4.Windows.AddExhibitionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Добавить выставку" 
+        Height="400" 
+        Width="600"
+        Background="#F5F5DC"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Название выставки -->
+        <Label Content="Название выставки:" Grid.Row="0"/>
+        <TextBox Text="{Binding NewExhibition.Title, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="1" 
+                 Margin="0,0,0,10"/>
+
+        <!-- Дата начала -->
+        <Label Content="Дата начала:" Grid.Row="2"/>
+        <DatePicker SelectedDate="{Binding NewExhibition.StartDate, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="3"
+                   Margin="0,0,0,10"/>
+
+        <!-- Дата окончания -->
+        <Label Content="Дата окончания:" Grid.Row="4"/>
+        <DatePicker SelectedDate="{Binding NewExhibition.EndDate, UpdateSourceTrigger=PropertyChanged}"
+                   Grid.Row="5"
+                   Margin="0,0,0,136"/>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Отмена" 
+                    Width="120" 
+                    Height="30"
+                    Margin="0,0,10,0"
+                    Click="CancelButton_Click"/>
+            <Button Content="Добавить" 
+                    Width="120" 
+                    Height="30"
+                    Click="SaveButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

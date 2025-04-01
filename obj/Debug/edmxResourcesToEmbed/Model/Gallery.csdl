@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PictureGalleryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Artwork">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YearCreated" Type="Int32" />
+    <Property Name="AuthorID" Type="Int32" />
+    <Property Name="ExhibitionID" Type="Int32" />
+    <Property Name="GenreID" Type="Int32" />
+    <Property Name="MediumID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <NavigationProperty Name="Author" Relationship="Self.FK__Artwork__AuthorI__3B75D760" FromRole="Artwork" ToRole="Author" />
+    <NavigationProperty Name="Exhibitions" Relationship="Self.FK__Artwork__Exhibit__3C69FB99" FromRole="Artwork" ToRole="Exhibitions" />
+    <NavigationProperty Name="Genre" Relationship="Self.FK_Artwork_Genre" FromRole="Artwork" ToRole="Genre" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_Artwork_Location" FromRole="Artwork" ToRole="Location" />
+    <NavigationProperty Name="Medium" Relationship="Self.FK_Artwork_Medium" FromRole="Artwork" ToRole="Medium" />
+  </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BirthYear" Type="Int32" />
+    <Property Name="DeathYear" Type="Int32" />
+    <NavigationProperty Name="Artwork" Relationship="Self.FK__Artwork__AuthorI__3B75D760" FromRole="Author" ToRole="Artwork" />
+  </EntityType>
+  <EntityType Name="Exhibitions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Artwork" Relationship="Self.FK__Artwork__Exhibit__3C69FB99" FromRole="Exhibitions" ToRole="Artwork" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenreName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Artwork" Relationship="Self.FK_Artwork_Genre" FromRole="Genre" ToRole="Artwork" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GalleryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Artwork" Relationship="Self.FK_Artwork_Location" FromRole="Location" ToRole="Artwork" />
+  </EntityType>
+  <EntityType Name="Medium">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MediumName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Artwork" Relationship="Self.FK_Artwork_Medium" FromRole="Medium" ToRole="Artwork" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HireDate" Type="DateTime" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Artwork__AuthorI__3B75D760">
+    <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+    <End Role="Artwork" Type="Self.Artwork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Artwork">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Artwork__Exhibit__3C69FB99">
+    <End Role="Exhibitions" Type="Self.Exhibitions" Multiplicity="0..1" />
+    <End Role="Artwork" Type="Self.Artwork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exhibitions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Artwork">
+        <PropertyRef Name="ExhibitionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Artwork_Genre">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+    <End Role="Artwork" Type="Self.Artwork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Artwork">
+        <PropertyRef Name="GenreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Artwork_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Artwork" Type="Self.Artwork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Artwork">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Artwork_Medium">
+    <End Role="Medium" Type="Self.Medium" Multiplicity="0..1" />
+    <End Role="Artwork" Type="Self.Artwork" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medium">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Artwork">
+        <PropertyRef Name="MediumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PictureGalleryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Artwork" EntityType="Self.Artwork" />
+    <EntitySet Name="Author" EntityType="Self.Author" />
+    <EntitySet Name="Exhibitions" EntityType="Self.Exhibitions" />
+    <EntitySet Name="Genre" EntityType="Self.Genre" />
+    <EntitySet Name="Location" EntityType="Self.Location" />
+    <EntitySet Name="Medium" EntityType="Self.Medium" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" />
+    <AssociationSet Name="FK__Artwork__AuthorI__3B75D760" Association="Self.FK__Artwork__AuthorI__3B75D760">
+      <End Role="Author" EntitySet="Author" />
+      <End Role="Artwork" EntitySet="Artwork" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Artwork__Exhibit__3C69FB99" Association="Self.FK__Artwork__Exhibit__3C69FB99">
+      <End Role="Exhibitions" EntitySet="Exhibitions" />
+      <End Role="Artwork" EntitySet="Artwork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Artwork_Genre" Association="Self.FK_Artwork_Genre">
+      <End Role="Genre" EntitySet="Genre" />
+      <End Role="Artwork" EntitySet="Artwork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Artwork_Location" Association="Self.FK_Artwork_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="Artwork" EntitySet="Artwork" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Artwork_Medium" Association="Self.FK_Artwork_Medium">
+      <End Role="Medium" EntitySet="Medium" />
+      <End Role="Artwork" EntitySet="Artwork" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d7cec8082804799a27b60b41308feaf" Name="Diagram1">
+        <EntityTypeShape EntityType="PictureGalleryModel.Artwork" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PictureGalleryModel.Author" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PictureGalleryModel.Exhibitions" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PictureGalleryModel.Genre" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PictureGalleryModel.Location" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PictureGalleryModel.Medium" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PictureGalleryModel.Staff" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="PictureGalleryModel.FK__Artwork__AuthorI__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="PictureGalleryModel.FK__Artwork__Exhibit__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="PictureGalleryModel.FK_Artwork_Genre" ManuallyRouted="false" />
+        <AssociationConnector Association="PictureGalleryModel.FK_Artwork_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="PictureGalleryModel.FK_Artwork_Medium" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

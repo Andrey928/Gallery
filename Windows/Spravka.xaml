@@ -1,0 +1,59 @@
+﻿<Window x:Class="gallery_mk4.Windows.Spravka"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gallery_mk4.Windows"
+        mc:Ignorable="d"
+             Title="Справка" Height="500" Width="900"
+             Background="#F5F5DC">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Text="Справка" 
+           FontSize="24" 
+           FontWeight="Bold"
+           HorizontalAlignment="Center" 
+           Margin="20"/>
+
+
+        <ScrollViewer Grid.Row="1" Margin="20,20,20,126">
+            <StackPanel>
+                <TextBlock Text="Информация:" 
+                   FontSize="18" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,10"/>
+                <TextBlock x:Name="txtContent" 
+                   FontSize="12" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,10"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button Grid.Row="1" 
+            Content="В главное меню"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Padding="10,5"
+            Click="GoToMainMenu_Click"
+            FontSize="14"
+            Background="#4CAF50" 
+            Foreground="White"
+            BorderBrush="Transparent"
+            Cursor="Hand"
+            ToolTip="Нажмите для возврата в главное меню" Height="50" Width="130" Margin="0,321,0,0">
+        <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>

@@ -1,0 +1,112 @@
+﻿<Window x:Class="gallery_mk4.Windows.AddArtworkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Добавить произведение" 
+        Height="500" 
+        Width="900"
+        Background="#F5F5DC"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Название -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле названия -->
+            <RowDefinition Height="Auto"/>
+            <!-- Автор -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле автора -->
+            <RowDefinition Height="Auto"/>
+            <!-- Год создания -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поле года -->
+            <RowDefinition Height="Auto"/>
+            <!-- Жанр и техника -->
+            <RowDefinition Height="Auto"/>
+            <!-- Выставка и локация -->
+            <RowDefinition Height="Auto"/>
+            <!-- Описание -->
+            <RowDefinition Height="*"/>
+            <!-- Пустое пространство -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+        </Grid.RowDefinitions>
+
+        <!-- Название -->
+        <Label Content="Название:" Grid.Row="0"/>
+        <TextBox Text="{Binding NewArtwork.Title, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="1" 
+                 Margin="0,0,0,10"/>
+
+        <!-- Автор -->
+        <Label Content="Автор:" Grid.Row="2"/>
+        <ComboBox ItemsSource="{Binding Authors}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="id"
+                  SelectedValue="{Binding NewArtwork.AuthorID}"
+                  Grid.Row="3" 
+                  Margin="0,0,0,10"/>
+
+        <!-- Год создания -->
+        <Label Content="Год создания:" Grid.Row="4"/>
+        <TextBox Text="{Binding NewArtwork.YearCreated, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="5" 
+                 Margin="0,0,0,15"/>
+
+        <!-- Жанр и техника -->
+        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="0,0,0,15">
+            <StackPanel Margin="0,0,20,0" Width="200">
+                <Label Content="Жанр"/>
+                <ComboBox ItemsSource="{Binding Genres}"
+                          DisplayMemberPath="GenreName"
+                          SelectedValuePath="id"
+                          SelectedValue="{Binding NewArtwork.GenreID}"/>
+            </StackPanel>
+            <StackPanel Width="200">
+                <Label Content="Техника"/>
+                <ComboBox ItemsSource="{Binding Mediums}"
+                          DisplayMemberPath="MediumName"
+                          SelectedValuePath="id"
+                          SelectedValue="{Binding NewArtwork.MediumID}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Выставка и локация -->
+        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,0,0,15">
+            <StackPanel Margin="0,0,20,0" Width="200">
+                <Label Content="Выставка"/>
+                <ComboBox ItemsSource="{Binding Exhibitions}"
+                          DisplayMemberPath="Title"
+                          SelectedValuePath="id"
+                          SelectedValue="{Binding NewArtwork.ExhibitionID}"/>
+            </StackPanel>
+            <StackPanel Width="200">
+                <Label Content="Место хранения"/>
+                <ComboBox ItemsSource="{Binding Locations}"
+                          DisplayMemberPath="GalleryName"
+                          SelectedValuePath="id"
+                          SelectedValue="{Binding NewArtwork.LocationID}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Описание -->
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Отмена" 
+                    Width="120" 
+                    Height="30"
+                    Margin="0,10,10,0"
+                    Click="CancelButton_Click"/>
+            <Button Content="Добавить" 
+                    Width="120" 
+                    Height="30"
+                    Margin="0,10,0,0"
+                    Click="AddButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
