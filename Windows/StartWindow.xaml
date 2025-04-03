@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gallery_mk4.Windows"
         mc:Ignorable="d"
-               Title="Галерея Искусств" Height="500" Width="900"
-Background="#F5F5DC">
+        Title="Галерея Искусств" 
+        Height="500" 
+        Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5DC">
 
     <Grid>
         <Grid.RowDefinitions>

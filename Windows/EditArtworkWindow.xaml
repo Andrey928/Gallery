@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Редактирование произведения" 
-        Height="500" 
-        Width="900"
+        MinWidth="700"  
+        MinHeight="450" 
+        MaxWidth="1200" 
+        MaxHeight="800" 
+        Width="900"    
+        Height="500"   
+        SizeToContent="Manual"
+        ResizeMode="CanResize"
         Background="#F5F5DC"
         WindowStartupLocation="CenterScreen">
 
@@ -24,13 +30,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Название -->
+       
         <Label Content="Название:" Grid.Row="0"/>
         <TextBox Text="{Binding CurrentArtwork.Title, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="1" 
                  Margin="0,0,0,10"/>
 
-        <!-- Автор -->
+        
         <Label Content="Автор:" Grid.Row="2"/>
         <ComboBox ItemsSource="{Binding Authors}"
                   DisplayMemberPath="Name"
@@ -39,13 +45,13 @@
                   Grid.Row="3" 
                   Margin="0,0,0,10"/>
 
-        <!-- Год создания -->
+       
         <Label Content="Год создания:" Grid.Row="4"/>
         <TextBox Text="{Binding CurrentArtwork.YearCreated, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="5" 
                  Margin="0,0,0,15"/>
 
-        <!-- Жанр и техника -->
+        
         <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="0,0,0,15">
             <StackPanel Margin="0,0,20,0" Width="200">
                 <Label Content="Жанр"/>
@@ -63,7 +69,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Выставка и локация -->
+        
         <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,0,0,15">
             <StackPanel Margin="0,0,20,0" Width="200">
                 <Label Content="Выставка"/>
@@ -81,18 +87,43 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Кнопки -->
+        
         <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Отмена" 
                     Width="120" 
-                    Height="30"
+                    Height="50"
                     Margin="0,10,10,0"
-                    Click="CancelButton_Click"/>
+                    Background="#F44336"  
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    ToolTip="Отменить изменения"
+                    IsCancel="True"
+                    Click="CancelButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Content="Сохранить" 
                     Width="120" 
-                    Height="30"
+                    Height="50"
                     Margin="0,10,0,0"
-                    Click="SaveButton_Click"/>
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderBrush="#45A049"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    IsDefault="True"
+                    ToolTip="Сохранить изменения"
+                    Click="SaveButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

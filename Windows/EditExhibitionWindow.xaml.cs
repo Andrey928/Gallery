@@ -13,7 +13,7 @@ namespace gallery_mk4.Windows
         {
             InitializeComponent();
 
-            // Сохраняем оригинал и создаем копию для редактирования
+            
             _originalExhibition = exhibitionToEdit;
             CurrentExhibition = new Exhibitions
             {
@@ -28,6 +28,7 @@ namespace gallery_mk4.Windows
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+          
             if (string.IsNullOrWhiteSpace(CurrentExhibition.Title))
             {
                 MessageBox.Show("Введите название выставки!", "Ошибка",
@@ -35,6 +36,23 @@ namespace gallery_mk4.Windows
                 return;
             }
 
+            
+            if (CurrentExhibition.StartDate == default)
+            {
+                MessageBox.Show("Выберите дату начала выставки!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+           
+            if (CurrentExhibition.EndDate == default)
+            {
+                MessageBox.Show("Выберите дату окончания выставки!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            
             if (CurrentExhibition.StartDate > CurrentExhibition.EndDate)
             {
                 MessageBox.Show("Дата окончания должна быть после даты начала!", "Ошибка",
@@ -47,16 +65,14 @@ namespace gallery_mk4.Windows
                 using (var context = new PictureGalleryEntities())
                 {
                     var exhibition = context.Exhibitions.Find(_originalExhibition.id);
-                    if (exhibition != null)
-                    {
-                        exhibition.Title = CurrentExhibition.Title;
-                        exhibition.StartDate = CurrentExhibition.StartDate;
-                        exhibition.EndDate = CurrentExhibition.EndDate;
 
-                        context.SaveChanges();
-                        DialogResult = true;
-                        Close();
-                    }
+                    exhibition.Title = CurrentExhibition.Title;
+                    exhibition.StartDate = CurrentExhibition.StartDate;
+                    exhibition.EndDate = CurrentExhibition.EndDate;
+
+                    context.SaveChanges();
+                    DialogResult = true;
+                    Close();
                 }
             }
             catch (Exception ex)

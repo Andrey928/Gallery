@@ -17,39 +17,64 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Название выставки -->
         <Label Content="Название выставки:" Grid.Row="0"/>
         <TextBox Text="{Binding NewExhibition.Title, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="1" 
                  Margin="0,0,0,10"/>
 
-        <!-- Дата начала -->
         <Label Content="Дата начала:" Grid.Row="2"/>
         <DatePicker SelectedDate="{Binding NewExhibition.StartDate, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="3"
                    Margin="0,0,0,10"/>
 
-        <!-- Дата окончания -->
         <Label Content="Дата окончания:" Grid.Row="4"/>
         <DatePicker SelectedDate="{Binding NewExhibition.EndDate, UpdateSourceTrigger=PropertyChanged}"
                    Grid.Row="5"
-                   Margin="0,0,0,136"/>
+                   Margin="0,0,0,10"/>
 
-        <!-- Кнопки -->
-        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10">
             <Button Content="Отмена" 
                     Width="120" 
-                    Height="30"
-                    Margin="0,0,10,0"
-                    Click="CancelButton_Click"/>
+                    Height="36"
+                    Margin="0,0,12,0"
+                    FontSize="14"
+                    IsCancel="True"
+                    Click="CancelButton_Click"
+                    Background="#F44336"  
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    ToolTip="Отменить изменения">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
             <Button Content="Добавить" 
                     Width="120" 
-                    Height="30"
-                    Click="SaveButton_Click"/>
+                    Height="36"
+                    FontSize="14"
+                    Click="SaveButton_Click"
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderBrush="#45A049"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    IsDefault="True"
+                    ToolTip="Добавить новую запись">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

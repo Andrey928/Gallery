@@ -13,13 +13,14 @@ namespace gallery_mk4.Windows
         {
             InitializeComponent();
             DataContext = this;
-            _newStaff.HireDate = DateTime.Today; // Установка текущей даты по умолчанию
+            _newStaff.HireDate = DateTime.Today;
         }
 
         public Staff NewStaff => _newStaff;
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+           
             if (string.IsNullOrWhiteSpace(_newStaff.FIO))
             {
                 MessageBox.Show("Введите ФИО сотрудника!", "Ошибка",
@@ -27,9 +28,41 @@ namespace gallery_mk4.Windows
                 return;
             }
 
+            
+            if (string.IsNullOrWhiteSpace(_newStaff.Position))
+            {
+                MessageBox.Show("Введите должность сотрудника!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            
+            if (_newStaff.HireDate == default)
+            {
+                MessageBox.Show("Укажите дату приема на работу!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+           
+            if (string.IsNullOrWhiteSpace(_newStaff.Email))
+            {
+                MessageBox.Show("Введите email сотрудника!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (!IsValidEmail(_newStaff.Email))
             {
                 MessageBox.Show("Введите корректный email!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+           
+            if (string.IsNullOrWhiteSpace(_newStaff.Phone))
+            {
+                MessageBox.Show("Введите телефон сотрудника!", "Ошибка",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
@@ -53,9 +86,6 @@ namespace gallery_mk4.Windows
 
         private bool IsValidEmail(string email)
         {
-            if (string.IsNullOrWhiteSpace(email))
-                return true; // Пустой email допустим
-
             try
             {
                 return Regex.IsMatch(email,

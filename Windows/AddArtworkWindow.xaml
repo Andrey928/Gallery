@@ -5,44 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Добавить произведение" 
-        Height="500" 
-        Width="900"
+        MinWidth="700"  
+        MinHeight="450" 
+        MaxWidth="1200" 
+        MaxHeight="800" 
+        Width="900"    
+        Height="500"   
+        SizeToContent="Manual"
+        ResizeMode="CanResize"
         Background="#F5F5DC"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Название -->
             <RowDefinition Height="Auto"/>
-            <!-- Поле названия -->
             <RowDefinition Height="Auto"/>
-            <!-- Автор -->
             <RowDefinition Height="Auto"/>
-            <!-- Поле автора -->
             <RowDefinition Height="Auto"/>
-            <!-- Год создания -->
             <RowDefinition Height="Auto"/>
-            <!-- Поле года -->
             <RowDefinition Height="Auto"/>
-            <!-- Жанр и техника -->
             <RowDefinition Height="Auto"/>
-            <!-- Выставка и локация -->
             <RowDefinition Height="Auto"/>
-            <!-- Описание -->
             <RowDefinition Height="*"/>
-            <!-- Пустое пространство -->
-            <RowDefinition Height="Auto"/>
-            <!-- Кнопки -->
+
         </Grid.RowDefinitions>
 
-        <!-- Название -->
+       
         <Label Content="Название:" Grid.Row="0"/>
         <TextBox Text="{Binding NewArtwork.Title, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="1" 
                  Margin="0,0,0,10"/>
 
-        <!-- Автор -->
+       
         <Label Content="Автор:" Grid.Row="2"/>
         <ComboBox ItemsSource="{Binding Authors}"
                   DisplayMemberPath="Name"
@@ -51,13 +46,13 @@
                   Grid.Row="3" 
                   Margin="0,0,0,10"/>
 
-        <!-- Год создания -->
+       
         <Label Content="Год создания:" Grid.Row="4"/>
         <TextBox Text="{Binding NewArtwork.YearCreated, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="5" 
                  Margin="0,0,0,15"/>
 
-        <!-- Жанр и техника -->
+      
         <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="0,0,0,15">
             <StackPanel Margin="0,0,20,0" Width="200">
                 <Label Content="Жанр"/>
@@ -75,7 +70,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Выставка и локация -->
+       
         <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,0,0,15">
             <StackPanel Margin="0,0,20,0" Width="200">
                 <Label Content="Выставка"/>
@@ -93,20 +88,44 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Описание -->
-
-        <!-- Кнопки -->
-        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10">
             <Button Content="Отмена" 
-                    Width="120" 
-                    Height="30"
-                    Margin="0,10,10,0"
-                    Click="CancelButton_Click"/>
+            Width="120" 
+            Height="50"
+            Margin="0,0,15,0"
+            FontSize="16"
+            Click="CancelButton_Click"
+            Background="#F44336"  
+            Foreground="White"
+            BorderBrush="Transparent"
+            Cursor="Hand"
+            IsCancel="True"
+            ToolTip="Отменить изменения">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+           
             <Button Content="Добавить" 
-                    Width="120" 
-                    Height="30"
-                    Margin="0,10,0,0"
-                    Click="AddButton_Click"/>
+            Width="120" 
+            Height="50"
+            FontSize="16"
+            Click="AddButton_Click"
+            Background="#4CAF50"  
+            Foreground="White"
+            BorderBrush="Transparent"
+            Cursor="Hand"
+            IsDefault="True"
+            ToolTip="Добавить новую запись">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

@@ -1,8 +1,7 @@
 ﻿using gallery_mk4.Model;
 using System;
-using System.Windows;
 using System.Text.RegularExpressions;
-using System.Windows.Input;
+using System.Windows;
 
 namespace gallery_mk4.Windows
 {
@@ -15,7 +14,6 @@ namespace gallery_mk4.Windows
         {
             InitializeComponent();
 
-            // Сохраняем оригинал и создаем копию для редактирования
             _originalStaff = staffToEdit;
             CurrentStaff = new Staff
             {
@@ -28,15 +26,38 @@ namespace gallery_mk4.Windows
             };
 
             DataContext = this;
-            Loaded += (s, e) => MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Валидация данных
+           
             if (string.IsNullOrWhiteSpace(CurrentStaff.FIO))
             {
                 MessageBox.Show("Введите ФИО сотрудника!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            
+            if (string.IsNullOrWhiteSpace(CurrentStaff.Position))
+            {
+                MessageBox.Show("Введите должность сотрудника!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            
+            if (CurrentStaff.HireDate == default)
+            {
+                MessageBox.Show("Укажите дату приема на работу!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            
+            if (string.IsNullOrWhiteSpace(CurrentStaff.Email))
+            {
+                MessageBox.Show("Введите email сотрудника!", "Ошибка",
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
@@ -48,22 +69,29 @@ namespace gallery_mk4.Windows
                 return;
             }
 
+            
+            if (string.IsNullOrWhiteSpace(CurrentStaff.Phone))
+            {
+                MessageBox.Show("Введите телефон сотрудника!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             try
             {
                 using (var context = new PictureGalleryEntities())
                 {
                     var staff = context.Staff.Find(_originalStaff.id);
-                    if (staff != null)
-                    {
-                        staff.FIO = CurrentStaff.FIO;
-                        staff.Position = CurrentStaff.Position;
-                        staff.Email = CurrentStaff.Email;
-                        staff.Phone = CurrentStaff.Phone;
 
-                        context.SaveChanges();
-                        DialogResult = true;
-                        Close();
-                    }
+                    staff.FIO = CurrentStaff.FIO;
+                    staff.Position = CurrentStaff.Position;
+                    staff.HireDate = CurrentStaff.HireDate;
+                    staff.Email = CurrentStaff.Email;
+                    staff.Phone = CurrentStaff.Phone;
+
+                    context.SaveChanges();
+                    DialogResult = true;
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -75,9 +103,6 @@ namespace gallery_mk4.Windows
 
         private bool IsValidEmail(string email)
         {
-            if (string.IsNullOrWhiteSpace(email))
-                return true; // Пустой email допустим
-
             try
             {
                 return Regex.IsMatch(email,

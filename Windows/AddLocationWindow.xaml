@@ -29,12 +29,38 @@
             <Button Content="Отмена" 
                     Width="100" 
                     Height="30"
+                    Background="#F44336"  
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    IsCancel="True"
+                    ToolTip="Отменить изменения"
                     Margin="0,0,10,0"
-                    Click="CancelButton_Click"/>
+                    Click="CancelButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Content="Добавить" 
                     Width="100" 
                     Height="30"
-                    Click="SaveButton_Click"/>
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderBrush="#45A049"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    IsDefault="True"
+                    ToolTip="Сохранить изменения"
+                    Click="SaveButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

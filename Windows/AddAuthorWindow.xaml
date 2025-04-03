@@ -17,23 +17,61 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="0,0,0,20">
-            <!-- Имя автора -->
+            
             <Label Content="Имя автора:"/>
             <TextBox Text="{Binding NewAuthor.Name}" Margin="0,0,0,10"/>
 
-            <!-- Год рождения -->
+           
             <Label Content="Год рождения:"/>
             <TextBox Text="{Binding NewAuthor.BirthYear}" Margin="0,0,0,10"/>
 
-            <!-- Год смерти -->
+            
             <Label Content="Год смерти"/>
             <TextBox Text="{Binding NewAuthor.DeathYear}"/>
         </StackPanel>
 
-        <!-- Кнопки -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Отмена" Width="100" Margin="0,0,10,0" Click="CancelButton_Click"/>
-            <Button Content="Добавить" Width="100" Click="SaveButton_Click"/>
+      
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            
+            <Button Content="Отмена" 
+            Width="100" 
+            Height="30"
+            Margin="0,0,12,0"
+            FontSize="12"
+            IsCancel="True"
+            Click="CancelButton_Click"
+            Background="#F44336"  
+            Foreground="White"
+            BorderBrush="Transparent"
+            BorderThickness="1"
+            Cursor="Hand"
+            ToolTip="Отменить изменения">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            
+            <Button Content="Добавить" 
+            Width="100" 
+            Height="30"
+            FontSize="12"
+            Click="SaveButton_Click"
+            Background="#4CAF50"
+            Foreground="White"
+            BorderBrush="#45A049"
+            BorderThickness="1"
+            Cursor="Hand"
+            IsDefault="True"
+            ToolTip="Сохранить изменения">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

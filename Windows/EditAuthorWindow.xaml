@@ -8,57 +8,74 @@
         Height="350" 
         Width="400"
         Background="#F5F5DC"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Имя -->
             <RowDefinition Height="Auto"/>
-            <!-- Поле имени -->
             <RowDefinition Height="Auto"/>
-            <!-- Год рождения -->
             <RowDefinition Height="Auto"/>
-            <!-- Поле года рождения -->
             <RowDefinition Height="Auto"/>
-            <!-- Год смерти -->
             <RowDefinition Height="Auto"/>
-            <!-- Поле года смерти -->
             <RowDefinition Height="*"/>
-            <!-- Пустое пространство -->
             <RowDefinition Height="Auto"/>
-            <!-- Кнопки -->
         </Grid.RowDefinitions>
 
-        <!-- Имя автора -->
+       
         <Label Content="Имя автора:" Grid.Row="0"/>
         <TextBox Text="{Binding CurrentAuthor.Name, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="1" 
                  Margin="0,0,0,10"/>
 
-        <!-- Год рождения -->
+        
         <Label Content="Год рождения:" Grid.Row="2"/>
         <TextBox Text="{Binding CurrentAuthor.BirthYear, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="3" 
                  Margin="0,0,0,10"/>
 
-        <!-- Год смерти -->
-        <Label Content="Год смерти (необязательно):" Grid.Row="4"/>
+        <Label Content="Год смерти:" Grid.Row="4"/>
         <TextBox Text="{Binding CurrentAuthor.DeathYear, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="5" 
                  Margin="0,0,0,20"/>
 
-        <!-- Кнопки -->
+       
         <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Отмена" 
                     Width="100" 
                     Height="25"
                     Margin="0,0,10,0"
-                    Click="CancelButton_Click"/>
+                    Background="#F44336"  
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    IsCancel="True"
+                    ToolTip="Отменить изменения"
+                    Click="CancelButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Content="Сохранить" 
                     Width="100" 
                     Height="25"
-                    Click="SaveButton_Click"/>
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderBrush="#45A049"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    IsDefault="True"
+                    ToolTip="Сохранить изменения"
+                    Click="SaveButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

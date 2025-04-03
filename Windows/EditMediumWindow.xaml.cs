@@ -14,7 +14,7 @@ namespace gallery_mk4.Windows
         {
             InitializeComponent();
 
-            // Сохраняем оригинал и создаем копию для редактирования
+            
             _originalMedium = mediumToEdit;
             CurrentMedium = new Medium
             {

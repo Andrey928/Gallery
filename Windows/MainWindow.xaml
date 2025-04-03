@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gallery_mk4.Windows"
         mc:Ignorable="d"
-            Title="Галерея Искусств" Height="700" Width="1100"
-            Background="#F5F5DC">
+        Title="Галерея Искусств" 
+        Height="700" 
+        Width="1100"
+        MinHeight="500"
+        MinWidth="750"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5DC">
 
     <Grid x:Name="MainGrid" >
         <Grid.RowDefinitions>
@@ -15,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <TabControl Grid.Row="0" Margin="10">
-            <!-- Вкладка "Произведения" с новыми полями -->
+          
             <TabItem Header="Произведения">
                 <DataGrid ItemsSource="{Binding Artworks}"
                       SelectedItem="{Binding SelectedArtwork}"
@@ -35,7 +40,7 @@
                 </DataGrid>
             </TabItem>
 
-            <!-- Вкладка "Авторы" -->
+            
             <TabItem Header="Авторы">
                 <DataGrid ItemsSource="{Binding Authors}"
                       SelectedItem="{Binding SelectedAuthor}"
@@ -49,7 +54,7 @@
                 </DataGrid>
             </TabItem>
 
-            <!-- Вкладка "Выставки" -->
+           
             <TabItem Header="Выставки">
                 <DataGrid ItemsSource="{Binding Exhibitions}"
                       SelectedItem="{Binding SelectedExhibition}"
@@ -63,7 +68,7 @@
                 </DataGrid>
             </TabItem>
 
-            <!-- Вкладка "Жанры" -->
+           
             <TabItem Header="Жанры">
                 <DataGrid ItemsSource="{Binding Genres}"
                       SelectedItem="{Binding SelectedGenre}"
@@ -117,9 +122,8 @@
             </TabItem>
         </TabControl>
 
-        <!-- Панель управления -->
+
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
-            <!-- Кнопка Добавить -->
             <Button x:Name="AddButton" 
             Content="Добавить" 
             Width="120" 
@@ -139,7 +143,6 @@
                 </Button.Resources>
             </Button>
 
-            <!-- Кнопка Удалить -->
             <Button x:Name="DeleteButton" 
             Content="Удалить" 
             Width="120" 
@@ -159,7 +162,6 @@
                 </Button.Resources>
             </Button>
 
-            <!-- Кнопка Редактировать -->
             <Button x:Name="EditButton" 
             Content="Редактировать" 
             Width="120" 

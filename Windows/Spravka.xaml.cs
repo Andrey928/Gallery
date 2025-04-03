@@ -30,6 +30,8 @@ namespace gallery_mk4.Windows
         {
             try
             {
+
+                //НЕ ЗАБУДЬ ПОМЕНЯТЬ ПУТЬ ПОТОМУ ЧТО СПРАВКА НЕ БУДЕТ ВЫВОДИТЬСЯ!!!!
                 string filePath = @"E:\VS projects\gallery_mk4\bin\Debug\info.txt";
                 string content = File.ReadAllText(filePath);
                 txtContent.Text = content;

@@ -20,6 +20,7 @@ namespace gallery_mk4.Windows
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            
             if (string.IsNullOrWhiteSpace(_newExhibition.Title))
             {
                 MessageBox.Show("Введите название выставки!", "Ошибка",
@@ -27,6 +28,23 @@ namespace gallery_mk4.Windows
                 return;
             }
 
+            
+            if (_newExhibition.StartDate == default)
+            {
+                MessageBox.Show("Выберите дату начала выставки!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+           
+            if (_newExhibition.EndDate == default)
+            {
+                MessageBox.Show("Выберите дату окончания выставки!", "Ошибка",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            
             if (_newExhibition.StartDate > _newExhibition.EndDate)
             {
                 MessageBox.Show("Дата окончания должна быть после даты начала!", "Ошибка",

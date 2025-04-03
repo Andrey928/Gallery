@@ -3,57 +3,66 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:gallery_mk4.Windows"
         mc:Ignorable="d"
-             Title="Справка" Height="500" Width="900"
-             Background="#F5F5DC">
+        Title="Справка" 
+        Height="500" 
+        Width="900"
+        MinHeight="500"
+        MinWidth="900"
+        MaxWidth="1300"
+        MaxHeight="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5DC">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="*"/>    
+            <RowDefinition Height="Auto"/> 
         </Grid.RowDefinitions>
 
-
+       
         <TextBlock Text="Справка" 
-           FontSize="24" 
-           FontWeight="Bold"
-           HorizontalAlignment="Center" 
-           Margin="20"/>
+                   Grid.Row="0"
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   Margin="20"/>
 
-
-        <ScrollViewer Grid.Row="1" Margin="20,20,20,126">
+        
+        <ScrollViewer Grid.Row="1" Margin="20,0,20,20">
             <StackPanel>
                 <TextBlock Text="Информация:" 
-                   FontSize="18" 
-                   FontWeight="Bold" 
-                   Margin="0,0,0,10"/>
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,10"/>
                 <TextBlock x:Name="txtContent" 
-                   FontSize="12" 
-                   FontWeight="Bold" 
-                   Margin="0,0,0,10"/>
+                           FontSize="12" 
+                           TextWrapping="Wrap"/>
             </StackPanel>
         </ScrollViewer>
 
-        <Button Grid.Row="1" 
-            Content="В главное меню"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Padding="10,5"
-            Click="GoToMainMenu_Click"
-            FontSize="14"
-            Background="#4CAF50" 
-            Foreground="White"
-            BorderBrush="Transparent"
-            Cursor="Hand"
-            ToolTip="Нажмите для возврата в главное меню" Height="50" Width="130" Margin="0,321,0,0">
-        <Button.Resources>
+        
+        <Button Grid.Row="2"
+                Content="В главное меню"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,20"
+                Padding="10,5"
+                Click="GoToMainMenu_Click"
+                FontSize="14"
+                Background="#4CAF50" 
+                Foreground="White"
+                BorderBrush="Transparent"
+                Cursor="Hand"
+                ToolTip="Нажмите для возврата в главное меню"
+                Height="50" 
+                Width="130">
+            <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-
     </Grid>
 </Window>

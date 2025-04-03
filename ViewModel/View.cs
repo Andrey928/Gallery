@@ -11,7 +11,7 @@ namespace gallery_mk4.ViewModel
 {
     public class GalleryViewModel : BaseViewModel
     {
-        // Коллекции
+       
         private ObservableCollection<Artwork> _artworks = new ObservableCollection<Artwork>();
         private ObservableCollection<Author> _authors = new ObservableCollection<Author>();
         private ObservableCollection<Exhibitions> _exhibitions = new ObservableCollection<Exhibitions>();
@@ -20,7 +20,7 @@ namespace gallery_mk4.ViewModel
         private ObservableCollection<Location> _locations = new ObservableCollection<Location>();
         private ObservableCollection<Staff> _staff = new ObservableCollection<Staff>();
 
-        // Выбранные элементы
+        
         private Artwork _selectedArtwork;
         private Author _selectedAuthor;
         private Exhibitions _selectedExhibition;
@@ -29,42 +29,42 @@ namespace gallery_mk4.ViewModel
         private Location _selectedLocation;
         private Staff _selectedStaff;
 
-        // Команды для Artwork
+        
         public ICommand AddArtworkCommand { get; }
         public ICommand EditArtworkCommand { get; }
         public ICommand DeleteArtworkCommand { get; }
 
-        // Команды для Author
+        
         public ICommand AddAuthorCommand { get; }
         public ICommand EditAuthorCommand { get; }
         public ICommand DeleteAuthorCommand { get; }
 
-        // Команды для Exhibition
+       
         public ICommand AddExhibitionCommand { get; }
         public ICommand EditExhibitionCommand { get; }
         public ICommand DeleteExhibitionCommand { get; }
 
-        // Команды для Genre
+        
         public ICommand AddGenreCommand { get; }
         public ICommand EditGenreCommand { get; }
         public ICommand DeleteGenreCommand { get; }
 
-        // Команды для Medium
+       
         public ICommand AddMediumCommand { get; }
         public ICommand EditMediumCommand { get; }
         public ICommand DeleteMediumCommand { get; }
 
-        // Команды для Location
+        
         public ICommand AddLocationCommand { get; }
         public ICommand EditLocationCommand { get; }
         public ICommand DeleteLocationCommand { get; }
 
-        // Команды для Staff
+        
         public ICommand AddStaffCommand { get; }
         public ICommand EditStaffCommand { get; }
         public ICommand DeleteStaffCommand { get; }
 
-        // Свойства коллекций
+        
         public ObservableCollection<Artwork> Artworks { get => _artworks; set => SetPropertyChanged(ref _artworks, value); }
         public ObservableCollection<Author> Authors { get => _authors; set => SetPropertyChanged(ref _authors, value); }
         public ObservableCollection<Exhibitions> Exhibitions { get => _exhibitions; set => SetPropertyChanged(ref _exhibitions, value); }
@@ -73,7 +73,7 @@ namespace gallery_mk4.ViewModel
         public ObservableCollection<Location> Locations { get => _locations; set => SetPropertyChanged(ref _locations, value); }
         public ObservableCollection<Staff> Staff { get => _staff; set => SetPropertyChanged(ref _staff, value); }
 
-        // Свойства выбранных элементов
+        
         public Artwork SelectedArtwork { get => _selectedArtwork; set => SetPropertyChanged(ref _selectedArtwork, value); }
         public Author SelectedAuthor { get => _selectedAuthor; set => SetPropertyChanged(ref _selectedAuthor, value); }
         public Exhibitions SelectedExhibition { get => _selectedExhibition; set => SetPropertyChanged(ref _selectedExhibition, value); }
@@ -84,7 +84,7 @@ namespace gallery_mk4.ViewModel
 
         public GalleryViewModel()
         {
-            // Инициализация команд
+           
             AddArtworkCommand = new RelayCommand(OpenAddArtworkWindow);
             EditArtworkCommand = new RelayCommand(OpenEditArtworkWindow, CanEditArtwork);
             DeleteArtworkCommand = new RelayCommand(DeleteArtwork, CanEditArtwork);

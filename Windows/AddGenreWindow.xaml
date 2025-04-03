@@ -18,25 +18,56 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Название жанра -->
+       
         <Label Content="Название жанра:" Grid.Row="0"/>
         <TextBox Text="{Binding NewGenre.GenreName, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="1" 
                  Margin="0,0,0,20"/>
 
-        <!-- Описание (необязательное) -->
+        
 
-        <!-- Кнопки -->
+       
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            
             <Button Content="Отмена" 
-                    Width="100" 
-                    Height="25"
-                    Margin="0,0,10,0"
-                    Click="CancelButton_Click"/>
+            Width="100" 
+            Height="28"
+            Margin="0,0,12,0"
+            FontSize="12"
+            Click="CancelButton_Click"
+            Background="#F44336"  
+            Foreground="White"
+            BorderBrush="Transparent"
+            BorderThickness="1"
+            Cursor="Hand"
+            IsCancel="True"
+            ToolTip="Отменить изменения">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            
             <Button Content="Добавить" 
-                    Width="100" 
-                    Height="25"
-                    Click="SaveButton_Click"/>
+            Width="100" 
+            Height="28"
+            FontSize="12"
+            Click="SaveButton_Click"
+            Background="#4CAF50"
+            Foreground="White"
+            BorderBrush="#45A049"
+            BorderThickness="1"
+            Cursor="Hand"
+            IsDefault="True"
+            ToolTip="Сохранить изменения">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

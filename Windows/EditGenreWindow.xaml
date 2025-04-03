@@ -8,6 +8,7 @@
         Height="350" 
         Width="450"
         Background="#F5F5DC"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="15">
@@ -19,23 +20,48 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Название жанра -->
+        
         <Label Content="Название жанра:" Grid.Row="0"/>
         <TextBox Text="{Binding CurrentGenre.GenreName, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="1" 
                  Margin="0,0,0,15"/>
 
-        <!-- Кнопки -->
+
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Отмена" 
                     Width="100" 
                     Height="30"
                     Margin="0,0,10,0"
-                    Click="CancelButton_Click"/>
+                    Background="#F44336"  
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    IsCancel="True"
+                    ToolTip="Отменить изменения"
+                    Click="CancelButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Content="Сохранить" 
                     Width="100" 
                     Height="30"
-                    Click="SaveButton_Click"/>
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderBrush="#45A049"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    IsDefault="True"
+                    ToolTip="Сохранить изменения"
+                    Click="SaveButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

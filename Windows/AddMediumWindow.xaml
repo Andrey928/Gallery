@@ -18,25 +18,48 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Название техники -->
+        
         <Label Content="Название техники:" Grid.Row="0"/>
         <TextBox Text="{Binding NewMedium.MediumName, UpdateSourceTrigger=PropertyChanged}" 
                  Grid.Row="1" 
                  Margin="0,0,0,20"/>
 
-        
-
-        <!-- Кнопки -->
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Отмена" 
                     Width="100" 
                     Height="25"
                     Margin="0,0,10,0"
-                    Click="CancelButton_Click"/>
+                    Background="#F44336"  
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    Click="CancelButton_Click" 
+                    Cursor="Hand"
+                    IsCancel="True"
+                    BorderThickness="1"
+                    ToolTip="Отменить изменения">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button Content="Добавить" 
                     Width="100" 
                     Height="25"
-                    Click="SaveButton_Click"/>
+                    Background="#4CAF50"
+                    Foreground="White"
+                    BorderBrush="#45A049"
+                    BorderThickness="1"
+                    Cursor="Hand"
+                    IsDefault="True"
+                    ToolTip="Сохранить изменения"
+                    Click="SaveButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
